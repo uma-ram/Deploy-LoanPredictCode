@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Loan Approval Prediction</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="app.js"></script>
+	<link rel="stylesheet" href="app.css">  <!-- For running locally -->
+   <!-- <script src="{{ url_for('static',filename='app.js') }}"></script>
+	<link rel="stylesheet"  href= "{{ url_for('static',filename='app.css') }}">--> <!-- For integrating Flask and HTML -->
+</head>
+<body>
+<h2>Predict Loan Approval</h2>
+
+<form class="form">
+  <label for="gender">Select Gender</label>
+  <input type="radio" id="male" name="gender" value=1 checked>
+  <label for="male">Male</label>
+  <input type="radio" id="female" name="gender" value=2>
+  <label for="female">Female</label><br><br>
+  
+  <label for="marital">Select Martial Status</label>
+  <input type="radio" id="married" name="marital" value=1>
+  <label for="married">Married</label>
+  <input type="radio" id="unmarried" name="marital" value=2 checked>
+  <label for="unmarried">Unmarried</label><br><br>
+
+  <label for="education">Select Education</label>
+  <input type="radio" id="graduate" name="education" value=1 checked>
+  <label for="graduate">Graduate</label>
+  <input type="radio" id="notgraduate" name="education" value=2>
+  <label for="notgraduate">Not Graduate</label><br><br>
+  
+  <label for="selfemployed">Select Self Employed</label>
+  <input type="radio" id="selfemployedyes" name="selfemployed" value=1 checked>
+  <label for="selfemployedyes">Yes</label>
+  <input type="radio" id="selfemployedno" name="selfemployed" value=2>
+  <label for="selfemployedno">No</label><br><br>
+  
+  
+  <label for="applicantname">Applicant Income :</label>
+  <input type="text" id="applicantincome" name="applicantincome" value="0"><br><br>
+
+  <label for="coapplicantname">Coapplicant Income:</label>
+  <input type="text" id="coapplicantincome" name="coapplicantincome" value="0"><br><br>
+
+  <label for="loanamount">Loan Amount:</label>
+  <input type="text" id="loanamount" name="loanamount" value="0"><br><br>
+  
+  <label for="loanterm">Choose Loan Amount Term:</label>
+  <select name="loanterm" id="loanterm">
+    <option value="12">12</option>
+    <option value="36">36</option>
+    <option value="60">60</option>
+    <option value="84">84</option>
+    <option value="120">120</option>
+    <option value="180">180</option>
+    <option value="240">240</option>
+    <option value="300">300</option>
+    <option value="360">360</option>
+    <option value="480">480</option>
+  </select><BR><br>
+  
+  <label for="credithistory">Select Credit History</label>
+  <input type="radio" id="credithistoryyes" name="credithistory" value=1 checked>
+  <label for="credithistoryyes">Yes</label>
+  <input type="radio" id="credithistoryno" name="credithistory" value=2>
+  <label for="credithistoryno">No</label><br><br>
+  
+   <label for="propertyares">Select Property Area</label>
+  <input type="radio" id="rural" name="propertyarea" value=1 checked>
+  <label for="rural">Rural</label>
+  <input type="radio" id="semiurban" name="propertyarea" value=2>
+  <label for="semiurban">Semiurban</label>
+  <input type="radio" id="urban" name="propertyarea" value=3>
+  <label for="urban">Urban</label><br><br>
+    
+   <label for="fname">Select Dependent</label>
+  <input type="radio" id="zero" name="dependents" value=0 checked>
+  <label for="zero">0</label>
+  <input type="radio" id="one" name="dependents" value=1>
+  <label for="one">1</label>
+  <input type="radio" id="two" name="dependents" value=2>
+  <label for="two">2</label>
+  <input type="radio" id="three" name="dependents" value=3>
+  <label for="three">3</label><br><br>
+  
+  <button class="submit" onclick="onClickedLoanApprovalStatus()" type="button">Loan Approval Status</button>
+  <div id="loanstatus" class="result">	<h2></h2> </div>
+</form> 
+
+</body>
+</html>
