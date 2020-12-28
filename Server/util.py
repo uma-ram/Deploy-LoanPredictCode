@@ -13,6 +13,8 @@ __data_columns = None
 __loanstatus = None
 
 def get_loan_status(gender,married,education,self_employed,applicant_income,coapplicant_income,loan_amount,loan_amount_term,credit_history,property_area,dependents):
+    print("values passed in get loan status - util")
+    print(gender,married,education,self_employed,applicant_income,coapplicant_income,loan_amount,loan_amount_term,credit_history,property_area,dependents)
     if (loan_amount<0):
         loan_amount=0
     if (applicant_income<0):

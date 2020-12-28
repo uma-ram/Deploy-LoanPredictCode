@@ -1,16 +1,18 @@
 
 from flask import Flask, request, jsonify, render_template
-#import server.util as util  #replace this by import util for running locally
-import util
+import server.util as util  #replace this by import util for running locally
+#import util
+import sys
 
-app = Flask(__name__)#, static_url_path="/client", static_folder='../client', template_folder="../client")
+app = Flask(__name__, static_url_path="/client", static_folder='../client', template_folder="../client")
 
-'''@app.route('/', methods=['GET'])
+
+@app.route('/', methods=['GET'])
 def index():
     if request.method=="GET":
         return render_template("test1.html")
 
-
+'''
 @app.route('/get_location_names', methods=['GET'])
 def get_location_names():
     response = jsonify({
@@ -34,12 +36,25 @@ def predict_loan_status():
     propertyarea = int(request.form['propertyarea'])
     dependents = int(request.form['dependents'])
 
-    response = jsonify({'loan_status': util.get_loan_status(gender,married,education,selfemployed,applicantincome,
-            coapplicantincome,loanamount,loanamountterm,credithistory,propertyarea,dependents)
-    })
-    response.headers.add('Access-Control-Allow-Origin', '*')
+    try:
+        print("gender: ", gender)
+        print("applicantincome: ",applicantincome)
+        print("coapplicantincome: ",coapplicantincome)
+        print("loanamount: ",loanamount)
+        print("credithistory: ",credithistory)
+        print("propertyarea: ", propertyarea)
+        print("dependents: ",dependents)
+        response = jsonify({'loan_status': util.get_loan_status(gender,married,education,selfemployed,applicantincome,
+            coapplicantincome,loanamount,loanamountterm,credithistory,propertyarea,dependents)})        
+    except:
+        e = sys.exc_info()[0]
+        print("Unexpected error:", e)
+        response = jsonify({'loan_status': 'Error in getting response'})
 
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    print("Added access control")
     return response
+
 @app.route('/')
 def Hi():
     return "Hi Uma"
